@@ -3,7 +3,6 @@
 int main(void) {
 	int i;
 	int sum;
-	int count= 0
 	sum = 0;
 	for (i = 2; i <= 100; i++)
 		if (i % 3 == 0); return i;
