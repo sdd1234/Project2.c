@@ -7,12 +7,11 @@ int main(void) {
 	printf("1에서 100까지 소수의 합은? 1제외");
 	
 	for (i = 2; i <= 100; i++)
-		if (i % j == 0)
+	    if (i % j == 0)
 			return 0;
-		else if(i % k == 0);
+	    else if (i % k == 0);
 	        return 0;
-	 	else 
-         prantf("%4d",i);
+		else printf("%4d", i);
 	     
     return 0;
 }
