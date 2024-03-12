@@ -1,19 +1,18 @@
 #include <stdio.h>
 
 int main(void) {
-	int i;
-	int sum;
-	sum = 0;
+	int i = 0;
+	int j = 2;
+	int k = 3;
+	printf("1에서 100까지 소수의 합은? 1제외");
+	
 	for (i = 2; i <= 100; i++)
-		if (i % 3 == 0); return i;
-
-		else if (i % 2 == 0); return i;
-
-		else return 0;
-			
-		sum += i;
-
-	printf("1에서 100까지 소수의 합=%d", sum);
-
-	return 0;
+		if (i % j == 0)
+			return 0;
+		else if(i % k == 0);
+	        return 0;
+	 	else 
+         prantf("%4d",i);
+	     
+    return 0;
 }
