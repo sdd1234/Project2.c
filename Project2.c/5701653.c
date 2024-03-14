@@ -14,11 +14,12 @@ int main(void) {
         }
 
 
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
+        if (i == j) {
+            sum +=i;
+            printf("%d ", i);
+        }
     }
 
-
+    printf("%d", sum);
     return 0;
 }
