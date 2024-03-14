@@ -16,10 +16,10 @@ int main(void) {
 
         if (i == j) {
             sum += i;
-            printf("%d ", i);
+          
         }
     }
 
-    printf("%d", sum);
+    printf("100까지의 소수의합은%d입니다", sum);
     return 0;
 }
