@@ -9,7 +9,7 @@ int main(void) {
     double d;           //실수값이 나오기때문에 double로 생성
     start = clock();        //측정시작
 
-    for (i = 2; i < 100; i++)    //중첩 for문  2부터 시작해서 99까지 2부터 99까지의 숫자로 나누어보고 나머지가 0이면  break 로 for문을 빠져나옴
+    for (i = 2; i <= 100; i++)    //중첩 for문  2부터 시작해서 100까지 2부터 100까지의 숫자로 나누어보고 나머지가 0이면  break 로 for문을 빠져나옴
     {
         for (j = 2; j < i; j++)
         {
