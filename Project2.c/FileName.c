@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <time.h>
-int long factorial_iter(long m)
+int long long factorial_iter(long m)
 {
     long i; 
-    long result = 1;
+    long long result = 1;
     for (i = 1; i <= m; i++)
     {
         result *= i;
         }
     return result;
     }
-int  long factorial_rec(long n)
+int  long long factorial_rec(long n)
 {
    if (n <= 1) 
         return 1;
@@ -21,22 +21,13 @@ int  long factorial_rec(long n)
        
     }
  }
-int main(int argc, char* argv[]) {
-    clock_t start_iter, end_iter, start_rec, end_rec;
-    long result_iter, result_rec;
-     
-    start_iter = clock();
-    result_iter = factorial_iter(20);
-    end_iter = clock();
+int main(void) {
+    long long u = factorial_iter(20);
+    long long s = factorial_rec(20);
+    printf("1식 %lld 2식 %lld", u, s);
+        
 
-    start_rec = clock();
-    result_rec = factorial_rec(20);
-    start_rec = clock();
-    
-    
-   printf("걸린시간 %f", (float)(end_iter - start_iter) / CLOCKS_PER_SEC);
-   printf("걸린시간 %f", (float)(end_rec - start_rec) / CLOCKS_PER_SEC);
-   printf("%ld",result_iter);
-   printf("%ld", result_rec);
+
+   
        return 0;
 }
