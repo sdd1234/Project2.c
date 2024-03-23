@@ -26,17 +26,16 @@ int main(void) {
     double cai;
     start = clock();
     long long result_iter = factorial_iter(20);
-    printf("%lld\n", result_iter);
+    printf("반복%lld\n", result_iter);
     stop = clock();
     cai = (double)(stop - start) / CLOCKS_PER_SEC;
-    printf("반복 %f", cai);
+    printf("측정시간은 %f초\n", cai);
 
     start = clock();
     long long result_rec = factorial_rec(20);
-    printf("%lld\n", result_rec);
+    printf("재귀%lld\n", result_rec);
     stop = clock();
     cai = (double)(stop - start) / CLOCKS_PER_SEC;
-    printf("순환 %f", cai);
+    printf("측정시간은 %f초\n ", cai);
     return 0;
-
 }
