@@ -8,15 +8,14 @@ double power_iter(int n, int j)
     }
     return k;
 }
-double power_rec(long n, j)
+double power_rec(int n,int j)
 {
     double a = 1;
     if (j == 0)
         return 1;
     else
         return n * power_rec(n, j - 1);
-    a *= power_rec(n, j - 1);
-    return a;
+    
 }
 
 int main(void) {
