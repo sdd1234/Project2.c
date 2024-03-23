@@ -38,4 +38,5 @@ int main(void) {
     cai = (double)(stop - start) / CLOCKS_PER_SEC;
     printf("¼øÈ¯ %f", cai);
     return 0;
+
 }
