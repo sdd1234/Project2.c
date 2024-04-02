@@ -41,8 +41,8 @@ void print(struct polynomial p) {
 }
 
 int main(void) {
-    struct polynomial a = { 2, {1, 2, 1} };
-    struct polynomial b = { 1, {3, 1} };
+    struct polynomial a = { 2, {1, 2, 3} };
+    struct polynomial b = { 3, {1, 2} };
     struct polynomial c;
 
     printf("a(x) = ");
