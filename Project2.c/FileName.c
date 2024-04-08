@@ -19,15 +19,27 @@ void poly_multiply(int As, int Ae, int Bs, int Be, int* Cs, int* Ce);
 void poly_add(int As, int Ae, int Bs, int Be, int* Cs, int* Ce);
 
 int main() {
-    int Cs, Ce;
+    int Cs1, Ce1, Cs2, Ce2, Cs3, Ce3, Cs4, Ce4;
 
     printf("\nA=");
     print_poly(0, 3);
     printf("\nB=");
     print_poly(4, 6);
-    poly_multiply(0, 3, 4, 6, &Cs, &Ce);
+
+    
+    poly_multiply(0, 3, 4, 6, &Cs1, &Ce1);
     printf("\nA*B=");
-    print_poly(Cs, Ce);
+    print_poly(Cs1, Ce1);
+
+    struct term new_terms[MAX_TERMS] = {
+        {7.0, 6}, {5.0, 3}, {9.0, 2}, {1.0, 0},
+        {5.0, 3}, {2.0, 2}, {1.0, 1}, {10.0, 0}
+    };
+
+    
+    poly_multiply(7, 10, 11, 14, &Cs2, &Ce2);
+    printf("\nC*D=");
+    print_poly(Cs2, Ce2);
 
     return 0;
 }
