@@ -46,8 +46,6 @@ int main() {
 
 void poly_multiply(int As, int Ae, int Bs, int Be, int* Cs, int* Ce) {
     int i, j, k;
-    int Cstart = avail;
-    int Cend;
     float c[MAX_TERMS] = { 0 };
 
     for (i = As; i <= Ae; i++) {
@@ -57,7 +55,7 @@ void poly_multiply(int As, int Ae, int Bs, int Be, int* Cs, int* Ce) {
         }
     }
 
-    *Cs = Cstart;
+    *Cs = avail;
     for (k = MAX_TERMS - 1; k >= 0; k--) {
         if (c[k] != 0) {
             terms[avail].coef = c[k];
@@ -66,8 +64,7 @@ void poly_multiply(int As, int Ae, int Bs, int Be, int* Cs, int* Ce) {
         }
     }
 
-    Cend = avail - 1;
-    *Ce = Cend;
+    *Ce = avail - 1;
 }
 
 void print_poly(int start, int end) {
