@@ -60,9 +60,7 @@ int eval(char* expression) {
         else if (ch >= '0' && ch <= '9') {
             push(&s, ch - '0');
         }
-        else {
-            printf("Abnormal character in expression\n");
-        }
+        
         i++;
     }
     return pop(&s);
