@@ -1,24 +1,18 @@
-#include <stdio.h>
+#pragma once
+#include "ItrTreeTrv.h"
+typedef TreeNode* element;
+typedef struct StackNode {
+	element data;
+	struct StackNode* link;
+} StackNode;
 
-int main(void) {
-    int i = 0;
-    int j = 0;
-    int sum = 0;
+typedef struct {
+	StackNode* top;
+} LinkedStackType;
 
-    for (i = 2; i < 100; i++)
-    {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0)
-                break;
-        }
-
-
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
-    }
-
-
-    return 0;
-}
+extern void init(LinkedStackType* s);
+extern int is_empty(LinkedStackType* s);
+extern int is_full(LinkedStackType* s);
+extern void push(LinkedStackType* s, element item);
+extern void print_stack(LinkedStackType* s);
+extern element pop(LinkedStackType* s);
