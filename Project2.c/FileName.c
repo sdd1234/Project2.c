@@ -1,80 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Stack.h"
-#include "ItrTreeTrv.h"
 
-void LinkPreOrder(TreeNode* root) {
-	LinkedStackType s;
-	TreeNode* nptr = root;
-
-	init(&s);
-
-	while (nptr != NULL || !is_empty(&s)) {
-		while (nptr != NULL) {
-			printf("push(%d)\n", nptr->data);
-			push(&s, nptr);
-			nptr = nptr->left;
-		}
-
-		nptr = pop(&s);
-		printf("pop(%2d)\n", nptr->data);
-		printf("visit(%d)\n", nptr->data);
-		nptr = nptr->right;
-	}
+// 초기화 함수
+void init(LinkedStackType* s)
+{
+	s->top = NULL;
+}
+// 공백 상태 검출 함수
+int is_empty(LinkedStackType* s)
+{
+	return (s->top == NULL);
+}
+// 포화 상태 검출 함수
+int is_full(LinkedStackType* s)
+{
+	return 0;
+}
+// 삽입 함수
+void push(LinkedStackType* s, element item)
+{
+	StackNode* temp = (StackNode*)malloc(sizeof(StackNode));
+	temp->data = item;
+	temp->link = s->top;
+	s->top = temp;
 }
 
-void LinkInOrder(TreeNode* root) {
-	LinkedStackType s;
-	TreeNode* nptr = root;
-
-	init(&s);
-
-	while (nptr != NULL || !is_empty(&s)) {
-		while (nptr != NULL) {
-			push(&s, nptr);
-			printf("push(%d)\n",nptr->data);
-			nptr = nptr->left;
-			
-		}
-
-		nptr = pop(&s);
-		printf("pop(%2d)\n", nptr->data);
-		printf("visit(%d)\n", nptr->data);
-
-		nptr = nptr->right;
-	}
+element pop(LinkedStackType* s) {
+	StackNode* temp = s->top;
+	element data = temp->data;
+	s->top = temp->link;
+	free(temp);
+	return data;
 }
-void LinkPostOrder(TreeNode* root) {
-	LinkedStackType s1, s2;
-	TreeNode* nptr = root;
 
-	init(&s1);
-	init(&s2);
-
-	if (nptr != NULL) {
-		push(&s1, nptr);
-		printf("push(%d)\n", nptr->data);
-	}
-
-	while (!is_empty(&s1)) {
-		nptr = pop(&s1);
-		printf("pop(%2d)\n", nptr->data);
-		push(&s2, nptr);
-		printf("push(%d)\n", nptr->data);
-
-		if (nptr->left != NULL) {
-			push(&s1, nptr->left);
-			printf("push(%d)\n", nptr->left->data);
-		}
-		if (nptr->right != NULL) {
-			push(&s1, nptr->right);
-			printf("push(%d)\n", nptr->right->data);
-		}
-	}
-
-	while (!is_empty(&s2)) {
-		nptr = pop(&s2);
-		printf("pop(%2d)\n", nptr->data);
-		printf("visit(%d)\n", nptr->data);
-	}
+void print_stack(LinkedStackType* s)
+{
+	for (StackNode* p = s->top; p != NULL; p = p->link)
+		printf("%d->", p->data->data);  // implementation specific
+	printf("NULL \n");
 }
+
