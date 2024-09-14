@@ -1,24 +1,14 @@
-#include <stdio.h>
+#pragma once
 
-int main(void) {
-    int i = 0;
-    int j = 0;
-    int sum = 0;
+typedef int value;
 
-    for (i = 2; i < 100; i++)
-    {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0)
-                break;
-        }
+struct tree_node{
+	value data;
+	struct tree_node* left,* right;
+};
 
+typedef struct tree_node TreeNode;
 
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
-    }
-
-
-    return 0;
-}
+extern void LinkPreOrder(TreeNode* root);
+extern void LinkInOrder(TreeNode* root);
+extern void LinkPostOrder(TreeNode* root);
