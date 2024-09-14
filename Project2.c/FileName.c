@@ -1,58 +1,80 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Stack.h"
 #include "ItrTreeTrv.h"
 
-TreeNode root[15];
+void LinkPreOrder(TreeNode* root) {
+	LinkedStackType s;
+	TreeNode* nptr = root;
 
-void PlaceNode(TreeNode* parent, int direction, TreeNode* child) {
-    if (direction == 0) {
-        parent->left = child;
-    }
-    else if (direction == 1) {
-        parent->right = child;
-    }
+	init(&s);
+
+	while (nptr != NULL || !is_empty(&s)) {
+		while (nptr != NULL) {
+			printf("push(%d)\n", nptr->data);
+			push(&s, nptr);
+			nptr = nptr->left;
+		}
+
+		nptr = pop(&s);
+		printf("pop(%2d)\n", nptr->data);
+		printf("visit(%d)\n", nptr->data);
+		nptr = nptr->right;
+	}
 }
 
-void GenerateLinkTree(TreeNode root[]) {
-    for (int i = 0; i < 15; i++) {
-        root[i].data = i + 1;
-        root[i].left = NULL;
-        root[i].right = NULL;
-    }
-    PlaceNode(&root[0], 0, &root[1]);  
-    PlaceNode(&root[0], 1, &root[4]);  
-    PlaceNode(&root[1], 0, &root[2]);  
-    PlaceNode(&root[2], 0, &root[3]);  
-    PlaceNode(&root[1], 1, &root[5]); 
-    PlaceNode(&root[4], 0, &root[6]);  
-    PlaceNode(&root[4], 1, &root[7]);  
-    PlaceNode(&root[7], 0, &root[8]); 
-    PlaceNode(&root[7], 1, &root[9]);  
-    PlaceNode(&root[9], 0, &root[10]); 
-    PlaceNode(&root[9], 1, &root[11]); 
-    PlaceNode(&root[11], 0, &root[12]); 
-    PlaceNode(&root[11], 1, &root[13]); 
-    PlaceNode(&root[13], 0, &root[14]);
+void LinkInOrder(TreeNode* root) {
+	LinkedStackType s;
+	TreeNode* nptr = root;
+
+	init(&s);
+
+	while (nptr != NULL || !is_empty(&s)) {
+		while (nptr != NULL) {
+			push(&s, nptr);
+			printf("push(%d)\n",nptr->data);
+			nptr = nptr->left;
+			
+		}
+
+		nptr = pop(&s);
+		printf("pop(%2d)\n", nptr->data);
+		printf("visit(%d)\n", nptr->data);
+
+		nptr = nptr->right;
+	}
 }
+void LinkPostOrder(TreeNode* root) {
+	LinkedStackType s1, s2;
+	TreeNode* nptr = root;
 
+	init(&s1);
+	init(&s2);
 
+	if (nptr != NULL) {
+		push(&s1, nptr);
+		printf("push(%d)\n", nptr->data);
+	}
 
-void LinkOrders(TreeNode* root) {
-    printf("Preorder: ");
-    LinkPreOrder(root);
-    printf("\n");
-    printf("Inorder:  ");
-    LinkInOrder(root);
-    printf("\n");
-    printf("Postorder:");
-    LinkPostOrder(root);
-    printf("\n");
-}
+	while (!is_empty(&s1)) {
+		nptr = pop(&s1);
+		printf("pop(%2d)\n", nptr->data);
+		push(&s2, nptr);
+		printf("push(%d)\n", nptr->data);
 
+		if (nptr->left != NULL) {
+			push(&s1, nptr->left);
+			printf("push(%d)\n", nptr->left->data);
+		}
+		if (nptr->right != NULL) {
+			push(&s1, nptr->right);
+			printf("push(%d)\n", nptr->right->data);
+		}
+	}
 
-int main() {
-    GenerateLinkTree(root);
-    LinkOrders(root);
-    printf("\n");
-    return 0;
+	while (!is_empty(&s2)) {
+		nptr = pop(&s2);
+		printf("pop(%2d)\n", nptr->data);
+		printf("visit(%d)\n", nptr->data);
+	}
 }
