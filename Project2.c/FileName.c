@@ -1,24 +1,16 @@
 #include <stdio.h>
-
-int main(void) {
-    int i = 0;
-    int j = 0;
-    int sum = 0;
-
-    for (i = 2; i < 100; i++)
-    {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0)
-                break;
-        }
-
-
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
-    }
-
+#include <stdlib.h>
+#include "LevelTraversal.h"
+TreeNode n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15;
+int main() {
+    TreeNode* root = &n1;
+    root->data = 1;
+    GenerateLinkTree(root);
+    
+    GetSumOfNodes(root);
+    GetNumberOfNodes(root);
+	GetHeightOfTree(root);
+    GetNumberOfLeafNodes(root);
 
     return 0;
 }
