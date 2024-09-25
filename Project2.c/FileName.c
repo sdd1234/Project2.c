@@ -1,24 +1,14 @@
-#include <stdio.h>
+#pragma once
 
-int main(void) {
-    int i = 0;
-    int j = 0;
-    int sum = 0;
+typedef struct TreeNode {
+	int data;
+	struct TreeNode* left, * right;
+} TreeNode;
 
-    for (i = 2; i < 100; i++)
-    {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0)
-                break;
-        }
-
-
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
-    }
-
-
-    return 0;
-}
+extern int level_order_x(TreeNode* root);
+extern int GetSumOfNodes(TreeNode* root);
+extern int GetNumberOfNodes(TreeNode* root);
+extern int GetHeightOfTree(TreeNode* root);
+extern int GetNumberOfLeafNodes(TreeNode* root);
+extern void GenerateLinkTree(TreeNode* root);
+extern void PlaceNode(TreeNode* node, int direction, int data);
