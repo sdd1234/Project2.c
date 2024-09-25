@@ -1,24 +1,17 @@
-#include <stdio.h>
+#pragma once
+#include "LevelTraversal.h"
 
-int main(void) {
-    int i = 0;
-    int j = 0;
-    int sum = 0;
+typedef TreeNode* element;	// 요소의 타입
+typedef struct QueueNode {	// 큐의 노드의 타입 
+	element data;
+	struct QueueNode* link;
+} QueueNode;
 
-    for (i = 2; i < 100; i++)
-    {
-        for (j = 2; j < i; j++)
-        {
-            if (i % j == 0)
-                break;
-        }
+typedef struct {		// 큐 ADT 구현
+	QueueNode* front, * rear;
+} LinkedQueueType;
 
-
-        if (i == j)
-            sum = +i;
-        printf("%d ", i);
-    }
-
-
-    return 0;
-}
+extern void init(LinkedQueueType* q);
+extern int is_empty(LinkedQueueType* q);
+extern void enqueue(LinkedQueueType* q, element data);
+extern element dequeue(LinkedQueueType* q);
